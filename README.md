@@ -214,7 +214,7 @@ Create folder: resources/views/payment/
 
 8.1 list.blade.php
 html
-Copy code
+
 <!DOCTYPE html>
 <html>
 <head>
