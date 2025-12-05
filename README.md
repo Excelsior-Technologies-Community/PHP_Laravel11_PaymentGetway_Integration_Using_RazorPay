@@ -32,7 +32,7 @@ cd laravel11-payment
 Update .env:
 
 makefile
-Copy code
+
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
@@ -42,20 +42,20 @@ DB_PASSWORD=
 Create database:
 
 sql
-Copy code
+
 CREATE DATABASE payment_app;
 📦 3. Install Razorpay SDK
 bash
-Copy code
+
 composer require razorpay/razorpay
 🗄 4. Create Payments Table Migration
 bash
-Copy code
+
 php artisan make:migration create_payments_table --create=payments
 Edit migration database/migrations/xxxx_create_payments_table.php:
 
 php
-Copy code
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -85,16 +85,15 @@ return new class extends Migration {
 Run migration:
 
 bash
-Copy code
+
 php artisan migrate
 🧑‍💻 5. Payment Model
 bash
-Copy code
 php artisan make:model Payment
 app/Models/Payment.php:
 
 php
-Copy code
+
 <?php
 
 namespace App\Models;
@@ -117,12 +116,12 @@ class Payment extends Model
 }
 🧑‍💻 6. Payment Controller
 bash
-Copy code
+
 php artisan make:controller PaymentController
 app/Http/Controllers/PaymentController.php:
 
 php
-Copy code
+
 <?php
 
 namespace App\Http\Controllers;
@@ -197,7 +196,7 @@ class PaymentController extends Controller
 routes/web.php:
 
 php
-Copy code
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentController;
 
@@ -278,7 +277,7 @@ Copy code
 </html>
 8.2 form.blade.php
 html
-Copy code
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -312,7 +311,7 @@ Copy code
 </html>
 8.3 checkout.blade.php
 html
-Copy code
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -347,16 +346,17 @@ rzp1.open();
 Add Razorpay keys to .env:
 
 ini
-Copy code
+
 RAZORPAY_KEY=rzp_test_xxxxxxxxxxxxx
 RAZORPAY_SECRET=xxxxxxxxxxxxxxxx
 🚀 10. Run Application
 bash
-Copy code
+
 php artisan serve
 Open in browser:
 
 bash
-Copy code
+
 http://localhost:8000/payment
+
 ✅ You now have a fully functional Laravel 11 Payment Gateway Integration using Razorpay
