@@ -1,4 +1,4 @@
-Laravel 11 Payment Gateway Integration (Razorpay)
+PHP_Laravel12_PaymentGateway_Integration
 ---
 By: Manasi Patel
 Date: 2025
