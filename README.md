@@ -24,8 +24,8 @@ Centered Bootstrap design
 ---
 1️⃣ Install Laravel 11 & Navigate to Project
 ```
-composer create-project laravel/laravel PHP_Laravel12_PaymentGetway_Integration_Using_RazorPay "^11.0"
-cd PHP_Laravel12_PaymentGetway_Integration_Using_RazorPay
+composer create-project laravel/laravel PHP_Laravel11_PaymentGetway_Integration_Using_RazorPay "^11.0"
+cd PHP_Laravel11_PaymentGetway_Integration_Using_RazorPay
 ```
 2️⃣ Configure Database
 
