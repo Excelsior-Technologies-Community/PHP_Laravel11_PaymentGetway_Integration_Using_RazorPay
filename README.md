@@ -26,8 +26,8 @@ This project demonstrates:
 
 ```bash
 # Install Laravel 11
-composer create-project laravel/laravel laravel11-payment "^11.0"
-cd laravel11-payment
+composer create-project laravel/laravel PHP_Laravel12_PaymentGetway_Integration_Using_RazorPay "^11.0"
+cd PHP_Laravel12_PaymentGetway_Integration_Using_RazorPay
 ⚙ 2. Configure Database
 Update .env:
 
