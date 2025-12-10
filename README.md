@@ -8,7 +8,7 @@ A Payment Management System built with Laravel 11. Users can make payments using
 
 ---
 
-## ⭐ Overview
+##  Overview
 
 This project demonstrates:
 
@@ -22,7 +22,7 @@ This project demonstrates:
 
 ---
 
-## 📁 1. Project Setup
+##  1. Project Setup
 
 ```bash
 # Install Laravel 11
@@ -44,7 +44,7 @@ Create database:
 sql
 
 CREATE DATABASE payment_app;
-📦 3. Install Razorpay SDK
+ 3. Install Razorpay SDK
 bash
 
 composer require razorpay/razorpay
@@ -87,7 +87,7 @@ Run migration:
 bash
 
 php artisan migrate
-🧑‍💻 5. Payment Model
+ 5. Payment Model
 bash
 php artisan make:model Payment
 app/Models/Payment.php:
@@ -114,7 +114,7 @@ class Payment extends Model
         'updated_by',
     ];
 }
-🧑‍💻 6. Payment Controller
+ 6. Payment Controller
 bash
 
 php artisan make:controller PaymentController
@@ -192,7 +192,7 @@ class PaymentController extends Controller
         return redirect()->back()->with('success','Payment restored!');
     }
 }
-🌐 7. Routes
+7. Routes
 routes/web.php:
 
 php
@@ -349,7 +349,7 @@ ini
 
 RAZORPAY_KEY=rzp_test_xxxxxxxxxxxxx
 RAZORPAY_SECRET=xxxxxxxxxxxxxxxx
-🚀 10. Run Application
+10. Run Application
 bash
 
 php artisan serve
@@ -359,4 +359,4 @@ bash
 
 http://localhost:8000/payment
 
-✅ You now have a fully functional Laravel 11 Payment Gateway Integration using Razorpay
+ You now have a fully functional Laravel 11 Payment Gateway Integration using Razorpay
