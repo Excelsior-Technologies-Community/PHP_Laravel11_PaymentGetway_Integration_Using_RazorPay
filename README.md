@@ -390,4 +390,14 @@ Open browser:
 ```
 http://localhost:8000/payment
 ```
+
+You can show this type Output : 
+
+
+<img width="1915" height="970" alt="Screenshot 2025-12-04 000659" src="https://github.com/user-attachments/assets/090d8dcd-4d64-4ccb-859a-24bfe3af3411" />
+<img width="1915" height="970" alt="Screenshot 2025-12-04 000659" src="https://github.com/user-attachments/assets/711d5816-4df0-499c-ad95-5977038b1ef4" />
+<img width="1919" height="960" alt="Screenshot 2025-12-04 000741" src="https://github.com/user-attachments/assets/1e96763e-b1e1-4d1f-8d40-15d9b73aedf8" />
+<img width="1919" height="968" alt="Screenshot 2025-12-04 000913" src="https://github.com/user-attachments/assets/c87c9316-38e7-4ad4-90cb-6aac7d6ccfb3" />
+
+
  Congratulations! You now have a fully functional Laravel 11 Payment Gateway Integration with Razorpay, including payment creation, listing, soft delete, and restore.
