@@ -1,16 +1,11 @@
 PHP_Laravel11_PaymentGateway_Integration
 ---
-By: Manasi Patel
-Date: 2025
+
 Laravel Version: 11
 
 This project demonstrates a Payment Management System using Laravel 11 and Razorpay. Users can make payments, view active payments, and manage them with soft delete and restore functionality.
 
-<<<<<<< HEAD
  Features
-=======
-🚀 Features
->>>>>>> stages
 ---
 Payment form using Razorpay
 
@@ -24,24 +19,14 @@ Restore deleted payments (optional)
 
 Centered Bootstrap design
 
-<<<<<<< HEAD
  Installation & Setup
 ---
 1️) Install Laravel 11 & Navigate to Project
-=======
-📦 Installation & Setup
----
-1️⃣ Install Laravel 11 & Navigate to Project
->>>>>>> stages
 ```
 composer create-project laravel/laravel PHP_Laravel11_PaymentGetway_Integration_Using_RazorPay "^11.0"
 cd PHP_Laravel11_PaymentGetway_Integration_Using_RazorPay
 ```
-<<<<<<< HEAD
 2️) Configure Database
-=======
-2️⃣ Configure Database
->>>>>>> stages
 
 Edit .env file:
 ```
@@ -57,19 +42,11 @@ Create database:
 
 CREATE DATABASE payment_app;
 
-<<<<<<< HEAD
 3️) Install Razorpay SDK
 ```
 composer require razorpay/razorpay
 ```
 4️) Create Payments Table Migration
-=======
-3️⃣ Install Razorpay SDK
-```
-composer require razorpay/razorpay
-```
-4️⃣ Create Payments Table Migration
->>>>>>> stages
 ```
 php artisan make:migration create_payments_table --create=payments
 ```
@@ -109,11 +86,7 @@ Run migration:
 ```
 php artisan migrate
 ```
-<<<<<<< HEAD
 5️) Create Payment Model
-=======
-5️⃣ Create Payment Model
->>>>>>> stages
 ```
 php artisan make:model Payment
 
@@ -141,11 +114,7 @@ class Payment extends Model
     ];
 }
 ```
-<<<<<<< HEAD
 6️) Create Payment Controller
-=======
-6️⃣ Create Payment Controller
->>>>>>> stages
 ```
 php artisan make:controller PaymentController
 ```
@@ -238,11 +207,7 @@ class PaymentController extends Controller
     }
 }
 ```
-<<<<<<< HEAD
 7️) Add Routes
-=======
-7️⃣ Add Routes
->>>>>>> stages
 
 routes/web.php:
 ```
@@ -261,19 +226,11 @@ Route::get('payments/delete/{id}', [PaymentController::class, 'deletePayment'])-
 Route::get('payments/restore/{id}', [PaymentController::class, 'restorePayment'])->name('payments.restore');
 Route::post('payment/success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
 ```
-<<<<<<< HEAD
 8️) Create Blade Views
 ```
 Folder: resources/views/payment/
 ```
 1️) list.blade.php (Payments List)
-=======
-8️⃣ Create Blade Views
-```
-Folder: resources/views/payment/
-```
-1️⃣ list.blade.php (Payments List)
->>>>>>> stages
 ```
 <!DOCTYPE html>
 <html>
@@ -341,11 +298,7 @@ Folder: resources/views/payment/
 </body>
 </html>
 ```
-<<<<<<< HEAD
 2️) form.blade.php (Payment Form)
-=======
-2️⃣ form.blade.php (Payment Form)
->>>>>>> stages
 ```
 <!DOCTYPE html>
 <html>
@@ -387,11 +340,7 @@ Folder: resources/views/payment/
 </body>
 </html>
 ```
-<<<<<<< HEAD
 3️) checkout.blade.php (Razorpay Checkout)
-=======
-3️⃣ checkout.blade.php (Razorpay Checkout)
->>>>>>> stages
 ```
 <!DOCTYPE html>
 <html>
@@ -424,22 +373,14 @@ rzp1.open();
 </body>
 </html>
 ```
-<<<<<<< HEAD
 9️) Add Razorpay Test Keys
-=======
-9️⃣ Add Razorpay Test Keys
->>>>>>> stages
 
 Add to .env:
 ```
 RAZORPAY_KEY=rzp_test_xxxxxxxxxxxxx
 RAZORPAY_SECRET=xxxxxxxxxxxxxxxx
 ```
-<<<<<<< HEAD
 10) Run the Application
-=======
-🔟 Run the Application
->>>>>>> stages
 ```
 php artisan serve
 
@@ -448,16 +389,13 @@ Open browser:
 ```
 http://localhost:8000/payment
 ```
-<<<<<<< HEAD
 
 You can show this type Output : 
 
 <img width="1915" height="970" alt="Screenshot 2025-12-04 000659" src="https://github.com/user-attachments/assets/711d5816-4df0-499c-ad95-5977038b1ef4" />
-<img width="1919" height="960" alt="Screenshot 2025-12-04 000741" src="https://github.com/user-attachments/assets/1e96763e-b1e1-4d1f-8d40-15d9b73aedf8" />
-<img width="1919" height="968" alt="Screenshot 2025-12-04 000913" src="https://github.com/user-attachments/assets/c87c9316-38e7-4ad4-90cb-6aac7d6ccfb3" />
+<img width="1919" height="960" alt="Screenshot 2025-12-04 000741" src="https://github.com/user-attachments/assets/a17b208c-9caf-4d14-b336-ed5b1fdc55c2" />
+<img width="1919" height="968" alt="Screenshot 2025-12-04 000913" src="https://github.com/user-attachments/assets/0aca024e-e90b-498f-89b7-f20dbac903ca" />
+
 
 
  Congratulations! You now have a fully functional Laravel 11 Payment Gateway Integration with Razorpay, including payment creation, listing, soft delete, and restore.
-=======
-✅ Congratulations! You now have a fully functional Laravel 11 Payment Gateway Integration with Razorpay, including payment creation, listing, soft delete, and restore.
->>>>>>> stages
