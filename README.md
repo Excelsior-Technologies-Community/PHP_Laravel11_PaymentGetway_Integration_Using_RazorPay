@@ -1,7 +1,6 @@
 PHP_Laravel11_PaymentGateway_Integration
 ---
-By: Manasi Patel
-Date: 2025
+
 Laravel Version: 11
 
 This project demonstrates a Payment Management System using Laravel 11 and Razorpay. Users can make payments, view active payments, and manage them with soft delete and restore functionality.
