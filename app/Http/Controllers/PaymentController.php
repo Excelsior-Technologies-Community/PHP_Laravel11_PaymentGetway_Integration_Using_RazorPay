@@ -7,6 +7,7 @@ use Stripe\Stripe;             // For Stripe integration (optional)
 use Stripe\PaymentIntent;      // For Stripe payment intent
 use App\Models\Payment;        // Payment model
 use Razorpay\Api\Api;           // Razorpay SDK
+use Barryvdh\DomPDF\Facade\Pdf; // For PDF generation (optional)
 
 class PaymentController extends Controller
 {
@@ -105,4 +106,17 @@ class PaymentController extends Controller
         $payment->restore();                                // Restore soft-deleted payment
         return redirect()->back()->with('success','Payment restored!');
     }
+
+    public function downloadInvoice($id)
+{
+    $payment = Payment::findOrFail($id);
+
+    if ($payment->status !== 'success') {
+        return redirect()->back()->with('error', 'Only successful payments have invoices.');
+    }
+
+    $pdf = Pdf::loadView('payment.invoice', compact('payment'));
+
+    return $pdf->download('invoice-'.$payment->id.'.pdf');
+}
 }

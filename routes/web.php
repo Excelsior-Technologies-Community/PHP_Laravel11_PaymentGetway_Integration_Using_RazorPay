@@ -43,3 +43,6 @@ Route::get('payments/restore/{id}', [PaymentController::class, 'restorePayment']
 // Handle payment success callback
 Route::post('payment/success', [PaymentController::class, 'paymentSuccess'])
       ->name('payment.success');
+
+// Download invoice for a payment
+Route::get('/payments/invoice/{id}', [PaymentController::class, 'downloadInvoice'])->name('payments.invoice');
