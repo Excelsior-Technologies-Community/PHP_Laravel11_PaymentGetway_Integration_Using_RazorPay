@@ -16,7 +16,7 @@ class PaymentController extends Controller
      */
     public function paymentForm()
     {
-        return view('payment.form'); 
+        return view('payment.form');
         // Returns the payment form view
     }
 
@@ -35,7 +35,7 @@ class PaymentController extends Controller
 
         // Create Razorpay order
         $order = $api->order->create([
-            'receipt' => 'order_rcptid_'.rand(1000,9999), // Unique receipt ID
+            'receipt' => 'order_rcptid_' . rand(1000, 9999), // Unique receipt ID
             'amount' => $request->amount * 100,           // Amount in paise
             'currency' => 'INR',
         ]);
@@ -72,21 +72,62 @@ class PaymentController extends Controller
         ]);
 
         // Redirect to payment list with success message
-        return redirect()->route('payments.list')->with('success','Payment successful!');
+        return redirect()->route('payments.list')->with('success', 'Payment successful!');
     }
 
     /**
      * List all payments
      */
-    public function listPayments()
+    /**
+     * List all payments
+     */
+    public function listPayments(Request $request)
     {
-        // Fetch all payments ordered by latest
-        $payments = Payment::orderBy('id','desc')->get();
+        $search = $request->search;
+        $status = $request->status;
 
-        // Pass payments to view
-        return view('payment.list', compact('payments'));
+        $payments = Payment::withTrashed()
+
+            ->when($search, function ($query) use ($search) {
+
+                $query->where(function ($q) use ($search) {
+
+                    $q->where('payment_method', 'LIKE', "%{$search}%")
+                        ->orWhere('id', $search)
+                        ->orWhere('amount', 'LIKE', "%{$search}%");
+                });
+            })
+
+            ->when($status, function ($query) use ($status) {
+
+                $query->where('status', $status);
+            })
+
+            ->orderBy('id', 'asc')
+            ->paginate(3);
+
+        $totalPayments = Payment::count();
+
+        $successPayments = Payment::where(
+            'status',
+            'success'
+        )->count();
+
+        $revenue = Payment::where(
+            'status',
+            'success'
+        )->sum('amount');
+
+        return view(
+            'payment.list',
+            compact(
+                'payments',
+                'totalPayments',
+                'successPayments',
+                'revenue'
+            )
+        );
     }
-
     /**
      * Soft delete a payment
      */
@@ -94,7 +135,7 @@ class PaymentController extends Controller
     {
         $payment = Payment::findOrFail($id); // Find payment
         $payment->delete();                  // Soft delete (deleted_at set)
-        return redirect()->back()->with('success','Payment soft deleted!');
+        return redirect()->back()->with('success', 'Payment soft deleted!');
     }
 
     /**
@@ -104,19 +145,19 @@ class PaymentController extends Controller
     {
         $payment = Payment::withTrashed()->findOrFail($id); // Include trashed records
         $payment->restore();                                // Restore soft-deleted payment
-        return redirect()->back()->with('success','Payment restored!');
+        return redirect()->back()->with('success', 'Payment restored!');
     }
 
     public function downloadInvoice($id)
-{
-    $payment = Payment::findOrFail($id);
+    {
+        $payment = Payment::findOrFail($id);
 
-    if ($payment->status !== 'success') {
-        return redirect()->back()->with('error', 'Only successful payments have invoices.');
+        if ($payment->status !== 'success') {
+            return redirect()->back()->with('error', 'Only successful payments have invoices.');
+        }
+
+        $pdf = Pdf::loadView('payment.invoice', compact('payment'));
+
+        return $pdf->download('invoice-' . $payment->id . '.pdf');
     }
-
-    $pdf = Pdf::loadView('payment.invoice', compact('payment'));
-
-    return $pdf->download('invoice-'.$payment->id.'.pdf');
-}
 }

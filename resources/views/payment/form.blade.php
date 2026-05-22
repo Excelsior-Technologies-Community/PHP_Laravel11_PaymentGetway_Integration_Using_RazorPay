@@ -1,68 +1,118 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Razorpay Payment</title> <!-- Page title -->
 
-    <!-- Bootstrap 5 CSS -->
+<head>
+
+    <title>Razorpay Payment</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-        /* Body background color */
         body {
-            background-color: #f8f9fa; /* Light gray */
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Payment card styling */
         .payment-card {
-            max-width: 450px; /* Maximum width */
-            width: 100%; /* Full width on smaller screens */
-            padding: 20px; /* Padding inside the card */
-            border-radius: 12px; /* Rounded corners */
+            width: 450px;
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
         }
     </style>
+
 </head>
+
 <body>
 
-<!-- Center the payment card vertically and horizontally -->
-<div class="d-flex justify-content-center align-items-center vh-100">
-    <div class="card shadow payment-card"> <!-- Card with shadow and custom styling -->
+    <div class="card payment-card shadow-lg">
 
-        <!-- Card Header -->
-        <div class="card-header bg-primary text-white text-center">
-            <h3 class="mb-0">Razorpay Payment</h3> <!-- Card title -->
+        <div class="card-header bg-dark text-white text-center">
+
+            <h3 class="mb-0">
+
+                Secure Payment Gateway
+
+            </h3>
+
         </div>
 
-        <!-- Card Body -->
-        <div class="card-body">
+        <div class="card-body p-4">
 
-            <!-- Alerts for success or error messages -->
             @if(session('success'))
-                <div class="alert alert-success text-center">{{ session('success') }}</div> <!-- Success alert -->
+
+            <div class="alert alert-success">
+
+                {{session('success')}}
+
+            </div>
+
             @endif
+
             @if(session('error'))
-                <div class="alert alert-danger text-center">{{ session('error') }}</div> <!-- Error alert -->
+
+            <div class="alert alert-danger">
+
+                {{session('error')}}
+
+            </div>
+
             @endif
 
-            <!-- Payment Form -->
-            <form action="{{ route('payment.process') }}" method="POST">
-                @csrf <!-- CSRF token for security -->
+            <form action="{{route('payment.process')}}" method="POST">
 
-                <!-- Amount input field -->
-                <div class="mb-3">
-                    <label for="amount" class="form-label">Amount (INR)</label>
-                    <input type="number" name="amount" id="amount" class="form-control" min="1" placeholder="Enter amount" required>
-                </div>
+                @csrf
 
-                <!-- Submit and navigation buttons -->
-                <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-success btn-lg">Pay Now</button> <!-- Submit button -->
-                    <a href="{{ route('payments.list') }}" class="btn btn-secondary btn-lg">View Payments</a> <!-- Link to view payments -->
-                </div>
+                <label class="mb-2">
+
+                    Enter Amount (INR)
+
+                </label>
+
+                <input
+                    type="number"
+                    name="amount"
+                    class="form-control mb-3"
+                    min="1"
+                    placeholder="Enter amount"
+                    required>
+
+                @error('amount')
+
+                <small class="text-danger">
+
+                    {{$message}}
+
+                </small>
+
+                @enderror
+
+
+                <button
+                    class="btn btn-success w-100">
+
+                    Pay Securely
+
+                </button>
+
+
+                <a
+                    href="{{route('payments.list')}}"
+                    class="btn btn-secondary w-100 mt-3">
+
+                    View Payments
+
+                </a>
+
             </form>
 
         </div>
+
     </div>
-</div>
 
 </body>
+
 </html>
